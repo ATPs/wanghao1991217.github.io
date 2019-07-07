@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="clusterProfiler包 enrichKEGG 富集出来的结果的基因id是 ENTREZID, 我们可能需要将其转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff = 0.05)kegg = kegg@result  把需要转">
+  <meta name="description" content="clusterProfiler包 enrichKEGG 富集，结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff = 0.05)kegg">
 <meta name="keywords" content="ID转换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对clusterProfiler包KEGG富集结果进行批量id转换">
 <meta property="og:url" content="http://yoursite.com/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/index.html">
 <meta property="og:site_name" content="Blog posted by wanghao">
-<meta property="og:description" content="clusterProfiler包 enrichKEGG 富集出来的结果的基因id是 ENTREZID, 我们可能需要将其转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff = 0.05)kegg = kegg@result  把需要转">
+<meta property="og:description" content="clusterProfiler包 enrichKEGG 富集，结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff = 0.05)kegg">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T13:55:51.044Z">
+<meta property="og:updated_time" content="2019-07-07T14:11:11.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对clusterProfiler包KEGG富集结果进行批量id转换">
-<meta name="twitter:description" content="clusterProfiler包 enrichKEGG 富集出来的结果的基因id是 ENTREZID, 我们可能需要将其转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff = 0.05)kegg = kegg@result  把需要转">
+<meta name="twitter:description" content="clusterProfiler包 enrichKEGG 富集，结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff = 0.05)kegg">
 
 
 
@@ -361,7 +361,7 @@
                 
               
 
-              <time title="Created: 2019-07-07 21:17:00 / Modified: 21:55:51" itemprop="dateCreated datePublished" datetime="2019-07-07T21:17:00+08:00">2019-07-07</time>
+              <time title="Created: 2019-07-07 21:17:00 / Modified: 22:11:11" itemprop="dateCreated datePublished" datetime="2019-07-07T21:17:00+08:00">2019-07-07</time>
             </span>
           
 
@@ -418,7 +418,7 @@
       
 
       
-        <p>clusterProfiler包 enrichKEGG 富集出来的结果的基因id是 ENTREZID, 我们可能需要将其转换为gene name</p>
+        <p>clusterProfiler包 enrichKEGG 富集，结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name</p>
 <h2 id="kegg通路富集："><a href="#kegg通路富集：" class="headerlink" title="kegg通路富集："></a>kegg通路富集：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">library(clusterProfiler)</span><br><span class="line">kegg = enrichKEGG(df<span class="variable">$ENTREZID</span>,organism = <span class="string">'hsa'</span>,pvalueCutoff = 0.05)</span><br><span class="line">kegg = kegg@result</span><br></pre></td></tr></table></figure>
 
 <h2 id="把需要转换的id组装成list："><a href="#把需要转换的id组装成list：" class="headerlink" title="把需要转换的id组装成list："></a>把需要转换的id组装成list：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genelist = strsplit(kegg<span class="variable">$geneID</span>,split=<span class="string">"/"</span>)</span><br></pre></td></tr></table></figure>
@@ -426,8 +426,6 @@
 <h2 id="利用bitr函数进行id转换："><a href="#利用bitr函数进行id转换：" class="headerlink" title="利用bitr函数进行id转换："></a>利用bitr函数进行id转换：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">symbol = lapply(genelist,<span class="keyword">function</span>(x)&#123;</span><br><span class="line">  paste(bitr(x, fromType=<span class="string">"ENTREZID"</span>, toType=<span class="string">"SYMBOL"</span>, OrgDb=<span class="string">"org.Hs.eg.db"</span>)[,2],collapse = <span class="string">"/"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="将转换好的gene-name粘贴到富集结果中："><a href="#将转换好的gene-name粘贴到富集结果中：" class="headerlink" title="将转换好的gene name粘贴到富集结果中："></a>将转换好的gene name粘贴到富集结果中：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kegg<span class="variable">$symbol</span> = unlist(symbol)</span><br></pre></td></tr></table></figure>
-
-
       
     </div>
 
