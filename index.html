@@ -359,7 +359,7 @@
                 
               
 
-              <time title="Created: 2019-07-07 21:17:00 / Modified: 22:11:11" itemprop="dateCreated datePublished" datetime="2019-07-07T21:17:00+08:00">2019-07-07</time>
+              <time title="Created: 2019-07-07 21:17:00 / Modified: 22:14:39" itemprop="dateCreated datePublished" datetime="2019-07-07T21:17:00+08:00">2019-07-07</time>
             </span>
           
 
@@ -418,7 +418,7 @@
       
         
           
-            <p>clusterProfiler包 enrichKEGG 富集，结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name</p>
+            <p>clusterProfiler包 enrichKEGG 函数经常用来做通路富集，但它的结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name</p>
 <h2 id="kegg通路富集："><a href="#kegg通路富集：" class="headerlink" title="kegg通路富集："></a>kegg通路富集：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">library(clusterProfiler)</span><br><span class="line">kegg = enrichKEGG(df<span class="variable">$ENTREZID</span>,organism = <span class="string">'hsa'</span>,pvalueCutoff = 0.05)</span><br><span class="line">kegg = kegg@result</span><br></pre></td></tr></table></figure>
 
 <h2 id="把需要转换的id组装成list："><a href="#把需要转换的id组装成list：" class="headerlink" title="把需要转换的id组装成list："></a>把需要转换的id组装成list：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genelist = strsplit(kegg<span class="variable">$geneID</span>,split=<span class="string">"/"</span>)</span><br></pre></td></tr></table></figure>
