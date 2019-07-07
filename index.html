@@ -282,6 +282,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wang hao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/" class="post-title-link" itemprop="url">对clusterProfiler包KEGG富集结果进行批量id转换</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-07 21:17:00 / Modified: 21:55:51" itemprop="dateCreated datePublished" datetime="2019-07-07T21:17:00+08:00">2019-07-07</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/R语言/" itemprop="url" rel="index"><span itemprop="name">R语言</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>clusterProfiler包 enrichKEGG 富集出来的结果的基因id是 ENTREZID, 我们可能需要将其转换为gene name</p>
+<h2 id="kegg通路富集："><a href="#kegg通路富集：" class="headerlink" title="kegg通路富集："></a>kegg通路富集：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">library(clusterProfiler)</span><br><span class="line">kegg = enrichKEGG(df<span class="variable">$ENTREZID</span>,organism = <span class="string">'hsa'</span>,pvalueCutoff = 0.05)</span><br><span class="line">kegg = kegg@result</span><br></pre></td></tr></table></figure>
+
+<h2 id="把需要转换的id组装成list："><a href="#把需要转换的id组装成list：" class="headerlink" title="把需要转换的id组装成list："></a>把需要转换的id组装成list：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genelist = strsplit(kegg<span class="variable">$geneID</span>,split=<span class="string">"/"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用bitr函数进行id转换："><a href="#利用bitr函数进行id转换：" class="headerlink" title="利用bitr函数进行id转换："></a>利用bitr函数进行id转换：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">symbol = lapply(genelist,<span class="keyword">function</span>(x)&#123;</span><br><span class="line">  paste(bitr(x, fromType=<span class="string">"ENTREZID"</span>, toType=<span class="string">"SYMBOL"</span>, OrgDb=<span class="string">"org.Hs.eg.db"</span>)[,2],collapse = <span class="string">"/"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="将转换好的gene-name粘贴到富集结果中："><a href="#将转换好的gene-name粘贴到富集结果中：" class="headerlink" title="将转换好的gene name粘贴到富集结果中："></a>将转换好的gene name粘贴到富集结果中：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kegg<span class="variable">$symbol</span> = unlist(symbol)</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/06/brightloong/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -454,12 +623,25 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
               
 
               
@@ -471,7 +653,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>

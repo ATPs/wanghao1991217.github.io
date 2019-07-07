@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="今天是2019年7月6日晚10点，开始记录一些R语言笔记、python学习、linux, 甚至是一些想法或者文献">
-<meta name="keywords" content="summary">
+  <meta name="description" content="clusterProfiler包 enrichKEGG 富集出来的结果的基因id是 ENTREZID, 我们可能需要将其转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff = 0.05)kegg = kegg@result  把需要转">
+<meta name="keywords" content="ID转换">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Start">
-<meta property="og:url" content="http://yoursite.com/2019/07/06/brightloong/index.html">
+<meta property="og:title" content="对clusterProfiler包KEGG富集结果进行批量id转换">
+<meta property="og:url" content="http://yoursite.com/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="今天是2019年7月6日晚10点，开始记录一些R语言笔记、python学习、linux, 甚至是一些想法或者文献">
+<meta property="og:description" content="clusterProfiler包 enrichKEGG 富集出来的结果的基因id是 ENTREZID, 我们可能需要将其转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff = 0.05)kegg = kegg@result  把需要转">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-06T14:38:42.310Z">
+<meta property="og:updated_time" content="2019-07-07T13:55:51.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Start">
-<meta name="twitter:description" content="今天是2019年7月6日晚10点，开始记录一些R语言笔记、python学习、linux, 甚至是一些想法或者文献">
+<meta name="twitter:title" content="对clusterProfiler包KEGG富集结果进行批量id转换">
+<meta name="twitter:description" content="clusterProfiler包 enrichKEGG 富集出来的结果的基因id是 ENTREZID, 我们可能需要将其转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff = 0.05)kegg = kegg@result  把需要转">
 
 
 
@@ -113,7 +113,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/07/06/brightloong/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>Start | MyBlog</title>
+  <title>对clusterProfiler包KEGG富集结果进行批量id转换 | MyBlog</title>
   
 
 
@@ -286,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/06/brightloong/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wang hao">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Start
+          <h1 class="post-title" itemprop="name headline">对clusterProfiler包KEGG富集结果进行批量id转换
 
               
             
@@ -329,7 +329,7 @@
                 
               
 
-              <time title="Created: 2019-07-06 22:30:33 / Modified: 22:38:42" itemprop="dateCreated datePublished" datetime="2019-07-06T22:30:33+08:00">2019-07-06</time>
+              <time title="Created: 2019-07-07 21:17:00 / Modified: 21:55:51" itemprop="dateCreated datePublished" datetime="2019-07-07T21:17:00+08:00">2019-07-07</time>
             </span>
           
 
@@ -339,6 +339,21 @@
             
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/R语言/" itemprop="url" rel="index"><span itemprop="name">R语言</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -371,7 +386,16 @@
       
 
       
-        <pre><code>今天是2019年7月6日晚10点，开始记录一些R语言笔记、python学习、linux, 甚至是一些想法或者文献</code></pre>
+        <p>clusterProfiler包 enrichKEGG 富集出来的结果的基因id是 ENTREZID, 我们可能需要将其转换为gene name</p>
+<h2 id="kegg通路富集："><a href="#kegg通路富集：" class="headerlink" title="kegg通路富集："></a>kegg通路富集：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">library(clusterProfiler)</span><br><span class="line">kegg = enrichKEGG(df<span class="variable">$ENTREZID</span>,organism = <span class="string">'hsa'</span>,pvalueCutoff = 0.05)</span><br><span class="line">kegg = kegg@result</span><br></pre></td></tr></table></figure>
+
+<h2 id="把需要转换的id组装成list："><a href="#把需要转换的id组装成list：" class="headerlink" title="把需要转换的id组装成list："></a>把需要转换的id组装成list：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genelist = strsplit(kegg<span class="variable">$geneID</span>,split=<span class="string">"/"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用bitr函数进行id转换："><a href="#利用bitr函数进行id转换：" class="headerlink" title="利用bitr函数进行id转换："></a>利用bitr函数进行id转换：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">symbol = lapply(genelist,<span class="keyword">function</span>(x)&#123;</span><br><span class="line">  paste(bitr(x, fromType=<span class="string">"ENTREZID"</span>, toType=<span class="string">"SYMBOL"</span>, OrgDb=<span class="string">"org.Hs.eg.db"</span>)[,2],collapse = <span class="string">"/"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="将转换好的gene-name粘贴到富集结果中："><a href="#将转换好的gene-name粘贴到富集结果中：" class="headerlink" title="将转换好的gene name粘贴到富集结果中："></a>将转换好的gene name粘贴到富集结果中：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kegg<span class="variable">$symbol</span> = unlist(symbol)</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -397,7 +421,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/summary/" rel="tag"># summary</a>
+            <a href="/tags/ID转换/" rel="tag"># ID转换</a>
           
         </div>
       
@@ -410,15 +434,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/06/brightloong/" rel="next" title="Start">
+                <i class="fa fa-chevron-left"></i> Start
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/" rel="prev" title="对clusterProfiler包KEGG富集结果进行批量id转换">
-                对clusterProfiler包KEGG富集结果进行批量id转换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -462,8 +486,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -537,6 +570,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kegg通路富集："><span class="nav-number">1.</span> <span class="nav-text">kegg通路富集：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把需要转换的id组装成list："><span class="nav-number">2.</span> <span class="nav-text">把需要转换的id组装成list：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用bitr函数进行id转换："><span class="nav-number">3.</span> <span class="nav-text">利用bitr函数进行id转换：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将转换好的gene-name粘贴到富集结果中："><span class="nav-number">4.</span> <span class="nav-text">将转换好的gene name粘贴到富集结果中：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
