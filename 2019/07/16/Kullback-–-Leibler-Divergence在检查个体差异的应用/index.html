@@ -114,7 +114,10 @@
 <meta property="og:image" content="http://www.wanghao.live/img/data_df.png">
 <meta property="og:image" content="http://www.wanghao.live/img/barplot1.png">
 <meta property="og:image" content="http://www.wanghao.live/img/dendogram_barplot.png">
-<meta property="og:updated_time" content="2019-07-17T12:58:28.686Z">
+<meta property="og:image" content="http://www.wanghao.live/img/t_ratio.png">
+<meta property="og:image" content="http://www.wanghao.live/img/kld.png">
+<meta property="og:image" content="http://www.wanghao.live/img/kld_plot.png">
+<meta property="og:updated_time" content="2019-07-18T15:22:50.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kullback – Leibler Divergence在检查样本离散程度的应用">
 <meta name="twitter:description" content="2017年５月cell发表的一篇对肾透明细胞癌浸润免疫细胞进行质谱流式分析论文：An Immune Atlas of Clear Cell Renal Cell Carcinoma (Chevrier et al., 2017, Cell 169, 736–749),论文最后对这73例样本进行Ｔ细胞亚群和巨噬细胞亚群构成分析，结论是肾透明细胞癌患者浸润免疫细胞CD4+T细胞构成最稳定，巨噬细胞构成">
@@ -405,7 +408,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-17 20:58:28" itemprop="dateModified" datetime="2019-07-17T20:58:28+08:00">2019-07-17</time>
+                <time title="Modified: 2019-07-18 23:22:50" itemprop="dateModified" datetime="2019-07-18T23:22:50+08:00">2019-07-18</time>
               </span>
             
           
@@ -488,6 +491,16 @@
 
 <p><img src="/img/dendogram_barplot.png" alt="dendogram_barplot"></p>
 <p>聚类后的样本，看起来肿瘤、正常组织、外周血没有明显差异，混淆在一起</p>
+<h2 id="计算各个组分细胞构成频率相对于均值的KLD"><a href="#计算各个组分细胞构成频率相对于均值的KLD" class="headerlink" title="计算各个组分细胞构成频率相对于均值的KLD"></a>计算各个组分细胞构成频率相对于均值的KLD</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">library(philentropy)　　<span class="comment">#这个包计算kld是以row的形式</span></span><br><span class="line">ratio = t(ratio)　<span class="comment">#转置下数据</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/t_ratio.png" alt="t_ratio"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#计算tumor kld</span></span><br><span class="line">tumor_kld = apply(ratio[1:10,],1,<span class="keyword">function</span>(x)&#123;</span><br><span class="line">  KL(rbind(x,colMeans(ratio[1:10,])))</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">#pbmc</span></span><br><span class="line">pbmc_kld = apply(ratio[11:20,],1,<span class="keyword">function</span>(x)&#123;</span><br><span class="line">  KL(rbind(x,colMeans(ratio[11:20,])))</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">#normal</span></span><br><span class="line">normal_kld = apply(ratio[21:30,],1,<span class="keyword">function</span>(x)&#123;</span><br><span class="line">  KL(rbind(x,colMeans(ratio[21:30,])))</span><br><span class="line">&#125;)</span><br><span class="line">library(dplyr)</span><br><span class="line">library(tidyr)</span><br><span class="line">kld = data.frame(row.names = 1:10,pbmc=pbmc_kld,normal=normal_kld,tumor=tumor_kld) %&gt;% gather(condition,kld)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/kld.png" alt="kld"></p>
+<h2 id="比较tumor-pbmc-normal各自的细胞构成离散程度"><a href="#比较tumor-pbmc-normal各自的细胞构成离散程度" class="headerlink" title="比较tumor,pbmc,normal各自的细胞构成离散程度"></a>比较tumor,pbmc,normal各自的细胞构成离散程度</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">library(ggpubr)</span><br><span class="line">ggplot(kld,aes(x = condition, y =kld,fill=condition))+</span><br><span class="line">  geom_violin()+</span><br><span class="line">  scale_fill_manual(values=c(<span class="string">"#0045ff"</span>,<span class="string">"#5de359"</span>,<span class="string">"#ff4646"</span>))+theme_bw()+</span><br><span class="line">  theme(panel.grid.major =element_blank(), panel.grid.minor = element_blank(),</span><br><span class="line">        panel.background = element_blank(),</span><br><span class="line">        panel.border = element_rect(linetype = 1,fill = <span class="string">"transparent"</span>),</span><br><span class="line">        axis.text.y =element_text(size = 12),</span><br><span class="line">        axis.text.x =element_text(size = 12,angle = 90,vjust = 0.6,hjust = 0.5),</span><br><span class="line">        title=element_text(size=14))+</span><br><span class="line">  labs(x=<span class="string">""</span>, y=<span class="string">"Kullback-Leibler Divergence"</span>,title=<span class="string">""</span>)+</span><br><span class="line">  theme(legend.position=<span class="string">"none"</span>)+</span><br><span class="line">  stat_compare_means(comparisons = list(c(<span class="string">"tumor"</span>,<span class="string">"pbmc"</span>),c(<span class="string">"tumor"</span>,<span class="string">"normal"</span>)),method = <span class="string">"wilcox.test"</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/kld_plot.png" alt="kld_plot"><br>从这个结果看，tumor的细胞构成离散程度相对于pbmc和normal稍微大一些，但差异不明显</p>
+<p>完。2019年7月18</p>
 
       
     </div>
@@ -692,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kullback-–-Leibler-Divergence-KL-divergence"><span class="nav-number">1.</span> <span class="nav-text">Kullback – Leibler Divergence(KL divergence)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KL-divergence-计算公式"><span class="nav-number">2.</span> <span class="nav-text">KL divergence 计算公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成随机数据"><span class="nav-number">4.</span> <span class="nav-text">生成随机数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#barplot-可视化样本的亚群构成"><span class="nav-number">5.</span> <span class="nav-text">barplot 可视化样本的亚群构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对这些样本根据细胞亚群的构成进行hierarchical-clustering"><span class="nav-number">6.</span> <span class="nav-text">对这些样本根据细胞亚群的构成进行hierarchical clustering</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kullback-–-Leibler-Divergence-KL-divergence"><span class="nav-number">1.</span> <span class="nav-text">Kullback – Leibler Divergence(KL divergence)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KL-divergence-计算公式"><span class="nav-number">2.</span> <span class="nav-text">KL divergence 计算公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成随机数据"><span class="nav-number">4.</span> <span class="nav-text">生成随机数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#barplot-可视化样本的亚群构成"><span class="nav-number">5.</span> <span class="nav-text">barplot 可视化样本的亚群构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对这些样本根据细胞亚群的构成进行hierarchical-clustering"><span class="nav-number">6.</span> <span class="nav-text">对这些样本根据细胞亚群的构成进行hierarchical clustering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算各个组分细胞构成频率相对于均值的KLD"><span class="nav-number">7.</span> <span class="nav-text">计算各个组分细胞构成频率相对于均值的KLD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较tumor-pbmc-normal各自的细胞构成离散程度"><span class="nav-number">8.</span> <span class="nav-text">比较tumor,pbmc,normal各自的细胞构成离散程度</span></a></li></ol></div>
             
 
           </div>
