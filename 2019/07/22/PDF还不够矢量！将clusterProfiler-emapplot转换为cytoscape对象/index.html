@@ -98,13 +98,13 @@
 
 
 
-  <meta name="description" content="基因集通过go或通路富集的方式向我们展示隐藏在数据里的生物效应，GSEA之类的富集方式则进一步的利用了基因表达矩阵信息，更完整的提取了数据的生物映射。而生物通路富集的可视化方式通常是二维的散点图或柱状图，它们通常能展现通路基因数量、p值等重要信息，但一方面对于较大的基因集来说，富集的结果通常数量庞大，dotplot或barplot通常无法完整展示；另一方面，富集结果条目之间通常相互联系，特别是">
+  <meta name="description" content="基因集通过go或通路富集的方式向我们展示隐藏在数据里的生物效应，GSEA之类的富集方式则进一步的利用了基因表达矩阵信息，更完整的提取了数据的生物映射。而生物通路富集的可视化方式通常是二维的散点图或柱状图，它们通常能展现通路基因数量、p值等重要信息，但一方面对于较大的基因集来说，富集的结果通常数量庞大，dotplot或barplot通常无法完整展示；另一方面，富集结果条目之间通常相互联系，特别是将g">
 <meta name="keywords" content="pathway,cytoscape">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PDF还不够矢量！用cytoscape构建富集通路网络">
 <meta property="og:url" content="http://www.wanghao.live/2019/07/22/PDF还不够矢量！将clusterProfiler-emapplot转换为cytoscape对象/index.html">
 <meta property="og:site_name" content="Blog posted by wanghao">
-<meta property="og:description" content="基因集通过go或通路富集的方式向我们展示隐藏在数据里的生物效应，GSEA之类的富集方式则进一步的利用了基因表达矩阵信息，更完整的提取了数据的生物映射。而生物通路富集的可视化方式通常是二维的散点图或柱状图，它们通常能展现通路基因数量、p值等重要信息，但一方面对于较大的基因集来说，富集的结果通常数量庞大，dotplot或barplot通常无法完整展示；另一方面，富集结果条目之间通常相互联系，特别是">
+<meta property="og:description" content="基因集通过go或通路富集的方式向我们展示隐藏在数据里的生物效应，GSEA之类的富集方式则进一步的利用了基因表达矩阵信息，更完整的提取了数据的生物映射。而生物通路富集的可视化方式通常是二维的散点图或柱状图，它们通常能展现通路基因数量、p值等重要信息，但一方面对于较大的基因集来说，富集的结果通常数量庞大，dotplot或barplot通常无法完整展示；另一方面，富集结果条目之间通常相互联系，特别是将g">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://www.wanghao.live/img/cyto_emapplot.png">
 <meta property="og:image" content="http://www.wanghao.live/img/cytoscape_genelist.png">
@@ -115,10 +115,11 @@
 <meta property="og:image" content="http://www.wanghao.live/img/cyto_intersect_index_numbers.png">
 <meta property="og:image" content="http://www.wanghao.live/img/cyto_intersect_index_com1.png">
 <meta property="og:image" content="http://www.wanghao.live/img/cyto_intersect_index_com2.png">
-<meta property="og:updated_time" content="2019-07-22T15:46:40.893Z">
+<meta property="og:image" content="http://www.wanghao.live/img/cyto_cytoscape.png">
+<meta property="og:updated_time" content="2019-07-23T00:16:42.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PDF还不够矢量！用cytoscape构建富集通路网络">
-<meta name="twitter:description" content="基因集通过go或通路富集的方式向我们展示隐藏在数据里的生物效应，GSEA之类的富集方式则进一步的利用了基因表达矩阵信息，更完整的提取了数据的生物映射。而生物通路富集的可视化方式通常是二维的散点图或柱状图，它们通常能展现通路基因数量、p值等重要信息，但一方面对于较大的基因集来说，富集的结果通常数量庞大，dotplot或barplot通常无法完整展示；另一方面，富集结果条目之间通常相互联系，特别是">
+<meta name="twitter:description" content="基因集通过go或通路富集的方式向我们展示隐藏在数据里的生物效应，GSEA之类的富集方式则进一步的利用了基因表达矩阵信息，更完整的提取了数据的生物映射。而生物通路富集的可视化方式通常是二维的散点图或柱状图，它们通常能展现通路基因数量、p值等重要信息，但一方面对于较大的基因集来说，富集的结果通常数量庞大，dotplot或barplot通常无法完整展示；另一方面，富集结果条目之间通常相互联系，特别是将g">
 <meta name="twitter:image" content="http://www.wanghao.live/img/cyto_emapplot.png">
 
 
@@ -391,13 +392,23 @@
                 
               
 
-              <time title="Created: 2019-07-22 21:44:00 / Modified: 23:46:40" itemprop="dateCreated datePublished" datetime="2019-07-22T21:44:00+08:00">2019-07-22</time>
+              <time title="Created: 2019-07-22 21:44:00" itemprop="dateCreated datePublished" datetime="2019-07-22T21:44:00+08:00">2019-07-22</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-23 08:16:42" itemprop="dateModified" datetime="2019-07-23T08:16:42+08:00">2019-07-23</time>
+              </span>
             
           
 
@@ -455,7 +466,7 @@
       
 
       
-        <p>　　基因集通过go或通路富集的方式向我们展示隐藏在数据里的生物效应，GSEA之类的富集方式则进一步的利用了基因表达矩阵信息，更完整的提取了数据的生物映射。而生物通路富集的可视化方式通常是二维的散点图或柱状图，它们通常能展现通路基因数量、p值等重要信息，但一方面对于较大的基因集来说，富集的结果通常数量庞大，dotplot或barplot通常无法完整展示；另一方面，富集结果条目之间通常相互联系，特别是将go和通路同时富集分析的时候，而dotplot和barplot也无法将这些结果彼此联系。<br>　　clusterProfiler::emapplot可以构建富集分析网络，这个图通常需要二次手动调整，但对于网路图来说，使用pdf在AI中编辑会很麻烦。<br>　　cytoscape插件enrichmap能很好的以网路图的形式展示通路富集或GSEA，但它的操作比较复杂，并且用过一遍后没太明白原理。<br>  　　下图为emaplot网路图：<br><img src="/img/cyto_emapplot.png" alt="cell_kirc_barplot"><br>　　接下来，我们尝试在R中预构建cytoscape输入文件，从而清晰明了地构建富集通路网络。</p>
+        <p>基因集通过go或通路富集的方式向我们展示隐藏在数据里的生物效应，GSEA之类的富集方式则进一步的利用了基因表达矩阵信息，更完整的提取了数据的生物映射。而生物通路富集的可视化方式通常是二维的散点图或柱状图，它们通常能展现通路基因数量、p值等重要信息，但一方面对于较大的基因集来说，富集的结果通常数量庞大，dotplot或barplot通常无法完整展示；另一方面，富集结果条目之间通常相互联系，特别是将go和通路同时富集分析的时候，而dotplot和barplot也无法将这些结果彼此联系。<br>　　clusterProfiler::emapplot可以构建富集分析网络，这个图通常需要二次手动调整，但对于网路图来说，使用pdf在AI中编辑会很麻烦。<br>　　cytoscape插件enrichmap能很好的以网路图的形式展示通路富集或GSEA，但它的操作比较复杂，并且用过一遍后没太明白原理。<br>  　　下图为emaplot网路图：<br><img src="/img/cyto_emapplot.png" alt="cell_kirc_barplot"><br>　　接下来，我们尝试在R中预构建cytoscape输入文件，从而清晰明了地构建富集通路网络。</p>
 <h2 id="对基因集进行通路富集分析"><a href="#对基因集进行通路富集分析" class="headerlink" title="对基因集进行通路富集分析"></a>对基因集进行通路富集分析</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">＃对enrichmap发表在nature protocol(PMID: 30664679)文章补充信息的table1进行通路富集分析</span><br><span class="line">library(clusterProfiler)</span><br><span class="line">library(ReactomePA)</span><br><span class="line">library(org.Hs.eg.db)</span><br><span class="line">pathway = enrichPathway(bitr(genelist,fromType = <span class="string">"SYMBOL"</span>,toType = <span class="string">"ENTREZID"</span>,OrgDb = <span class="string">"org.Hs.eg.db"</span>)[,2], organism = <span class="string">"human"</span>,</span><br><span class="line">                        pvalueCutoff = 0.05)@result</span><br></pre></td></tr></table></figure>
 
 <p><img src="/img/cytoscape_genelist.png" alt="cell_kirc_barplot"><br><img src="/img/cyto_pathway.png" alt="cell_kirc_barplot"></p>
@@ -470,7 +481,10 @@
 
 <p>构建完成的cytoscape输入文件：<br><img src="/img/cyto_intersect_index_com1.png" alt="cell_kirc_barplot"></p>
 <p><img src="/img/cyto_intersect_index_com2.png" alt="cell_kirc_barplot"></p>
-<h2 id="导入cytoscape进行手动设置"><a href="#导入cytoscape进行手动设置" class="headerlink" title="导入cytoscape进行手动设置"></a>导入cytoscape进行手动设置</h2>
+<h2 id="导入cytoscape进行手动设置"><a href="#导入cytoscape进行手动设置" class="headerlink" title="导入cytoscape进行手动设置"></a>导入cytoscape进行手动设置</h2><p>　　把上面创建的intersect_index文件导入到cytoscape，node1和node2分别是通路term的名字，node1_count和node1_pvalue分别设置为source_node contribute。最后我们可以同过node1_count控制大小，pvalue映射node颜色，线段的粗细及透明度可以映射为intersect_numbers.</p>
+<p><img src="/img/cyto_cytoscape.png" alt="cell_kirc_barplot"></p>
+<p>2019.7.23 完</p>
+
       
     </div>
 
