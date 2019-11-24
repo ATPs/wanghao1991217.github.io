@@ -1,2 +1,2 @@
+http://www.wanghao.live/2019/11/24/Ipython-notebook-Essentials/
 http://www.wanghao.live/2019/07/22/PDF还不够矢量！将clusterProfiler-emapplot转换为cytoscape对象/
-http://www.wanghao.live/2019/07/16/Kullback-–-Leibler-Divergence在检查个体差异的应用/
