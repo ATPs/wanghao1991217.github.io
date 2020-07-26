@@ -98,18 +98,17 @@
 
 
 
-  <meta name="description" content="clusterProfiler包 enrichKEGG 函数经常用来做通路富集，但它的结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff">
-<meta name="keywords" content="基因富集,id转换">
+  <meta name="description" content="R function notes replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4     remove fun    123456df %&amp;gt;% drop_na() ## drop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对clusterProfiler包KEGG富集结果进行批量id转换">
-<meta property="og:url" content="http://www.wanghao.live/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/index.html">
+<meta property="og:title" content="R常用函数功能记录">
+<meta property="og:url" content="http://www.wanghao.live/2020/07/26/R常用函数功能记录/index.html">
 <meta property="og:site_name" content="Blog posted by wanghao">
-<meta property="og:description" content="clusterProfiler包 enrichKEGG 函数经常用来做通路富集，但它的结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff">
+<meta property="og:description" content="R function notes replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4     remove fun    123456df %&amp;gt;% drop_na() ## drop">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-16T15:30:04.622Z">
+<meta property="og:updated_time" content="2020-07-26T07:04:33.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对clusterProfiler包KEGG富集结果进行批量id转换">
-<meta name="twitter:description" content="clusterProfiler包 enrichKEGG 函数经常用来做通路富集，但它的结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name kegg通路富集：123library(clusterProfiler)kegg = enrichKEGG(df$ENTREZID,organism = &apos;hsa&apos;,pvalueCutoff">
+<meta name="twitter:title" content="R常用函数功能记录">
+<meta name="twitter:description" content="R function notes replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4     remove fun    123456df %&amp;gt;% drop_na() ## drop">
 
 
 
@@ -117,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://www.wanghao.live/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/">
+  <link rel="canonical" href="http://www.wanghao.live/2020/07/26/R常用函数功能记录/">
 
 
 
@@ -127,7 +126,7 @@
   };
 </script>
 
-  <title>对clusterProfiler包KEGG富集结果进行批量id转换 | Blog posted by wanghao</title>
+  <title>R常用函数功能记录 | Blog posted by wanghao</title>
   
 
 
@@ -338,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wanghao.live/2019/07/07/对clusterProfiler包KEGG富集结果进行批量id转换/">
+    <link itemprop="mainEntityOfPage" href="http://www.wanghao.live/2020/07/26/R常用函数功能记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wang hao (AllRightsReserved)">
@@ -355,7 +354,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">对clusterProfiler包KEGG富集结果进行批量id转换
+          <h1 class="post-title" itemprop="name headline">R常用函数功能记录
 
               
             
@@ -381,7 +380,7 @@
                 
               
 
-              <time title="Created: 2019-07-07 21:17:00" itemprop="dateCreated datePublished" datetime="2019-07-07T21:17:00+08:00">2019-07-07</time>
+              <time title="Created: 2020-07-26 15:02:16 / Modified: 15:04:33" itemprop="dateCreated datePublished" datetime="2020-07-26T15:02:16+08:00">2020-07-26</time>
             </span>
           
 
@@ -389,40 +388,8 @@
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-16 23:30:04" itemprop="dateModified" datetime="2019-07-16T23:30:04+08:00">2019-07-16</time>
-              </span>
-            
           
 
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据分析/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据分析/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -455,14 +422,53 @@
       
 
       
-        <p>clusterProfiler包 enrichKEGG 函数经常用来做通路富集，但它的结果里面每个term的id是 ‘/‘ 隔开的ENTREZID, 很不方便，所以我们可能需要把它们转换为gene name</p>
-<h2 id="kegg通路富集："><a href="#kegg通路富集：" class="headerlink" title="kegg通路富集："></a>kegg通路富集：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">library(clusterProfiler)</span><br><span class="line">kegg = enrichKEGG(df<span class="variable">$ENTREZID</span>,organism = <span class="string">'hsa'</span>,pvalueCutoff = 0.05)</span><br><span class="line">kegg = kegg@result</span><br></pre></td></tr></table></figure>
+        <h3 id="R-function-notes"><a href="#R-function-notes" class="headerlink" title="R function notes"></a>R function notes</h3><p> replace fun</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtcars %&gt;% mutate(mpg = replace(mpg, cyl == <span class="number">4</span>, <span class="literal">NA</span>)) <span class="comment">## change the values in 'mpg' to NA that corresponds to cyl==4</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="把需要转换的id组装成list："><a href="#把需要转换的id组装成list：" class="headerlink" title="把需要转换的id组装成list："></a>把需要转换的id组装成list：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genelist = strsplit(kegg<span class="variable">$geneID</span>,split=<span class="string">"/"</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="利用bitr函数进行id转换："><a href="#利用bitr函数进行id转换：" class="headerlink" title="利用bitr函数进行id转换："></a>利用bitr函数进行id转换：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">symbol = lapply(genelist,<span class="keyword">function</span>(x)&#123;</span><br><span class="line">  paste(bitr(x, fromType=<span class="string">"ENTREZID"</span>, toType=<span class="string">"SYMBOL"</span>, OrgDb=<span class="string">"org.Hs.eg.db"</span>)[,2],collapse = <span class="string">"/"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h2 id="将转换好的gene-name粘贴到富集结果中："><a href="#将转换好的gene-name粘贴到富集结果中：" class="headerlink" title="将转换好的gene name粘贴到富集结果中："></a>将转换好的gene name粘贴到富集结果中：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kegg<span class="variable">$symbol</span> = unlist(symbol)</span><br></pre></td></tr></table></figure>
+<p> remove fun</p>
+   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% drop_na() <span class="comment">## drop rows containing NA</span></span><br><span class="line"></span><br><span class="line">df %&gt;% drop_na(x) <span class="comment">## drop rows which the x column containing NA</span></span><br><span class="line"></span><br><span class="line">vars &lt;- c(<span class="string">"y"</span>, <span class="string">"z"</span>)</span><br><span class="line">df %&gt;% drop_na(x, any_of(vars)) <span class="comment">## drop rows which the y and z col containing NA3.</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p> split fun</p>
+   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">as.list(strsplit(str, <span class="string">"\\s+"</span>)) <span class="comment">## split a string to a list</span></span><br><span class="line"></span><br><span class="line">base::split(df, f=factor(var)) <span class="comment">## split a data.frame to a list of dfs</span></span><br></pre></td></tr></table></figure>
+
+<p>  merge fun</p>
+   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dplyr::bind_rows(list_of_dataframes, .id = <span class="string">"column_label"</span>) <span class="comment">### bind a list of dfs to one df</span></span><br></pre></td></tr></table></figure>
+
+<p> select fun</p>
+   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">select(mydata,starts_with(<span class="string">"mpg"</span>)) <span class="comment">### Select on columns names of the dataframe which starts with</span></span><br><span class="line"></span><br><span class="line">select(mydata,ends_with(<span class="string">"cyl"</span>)) <span class="comment">### Select on columns names of the dataframe which ends with</span></span><br><span class="line"></span><br><span class="line">select(mydata,contains(c(<span class="string">"a"</span>,<span class="string">"b"</span>))) <span class="comment">### Select on columns names of the dataframe which contains</span></span><br><span class="line"></span><br><span class="line">select(mydata,matches(<span class="string">"di"</span>)) <span class="comment">### Select on columns names of the dataframe which matches</span></span><br><span class="line"></span><br><span class="line">select(mydata,everything()) <span class="comment">### Select everything</span></span><br><span class="line"></span><br><span class="line">select(mydata,mpg,cyl,wt) <span class="comment">### Select columns by using names</span></span><br><span class="line"></span><br><span class="line">select(mydata,<span class="number">3</span>:<span class="number">4</span>)  <span class="comment">### Select columns by index</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p> ggplot2 </p>
+   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">geom_point(shape = <span class="string">"|"</span>) <span class="comment">## other shapes of point plot of ggplot2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### bar plot star from non-zero ylab </span></span><br><span class="line"><span class="keyword">library</span>(scales)</span><br><span class="line">ggplot(.,aes(x=.,y=.,fill = .)) +</span><br><span class="line">  geom_bar(aes(fill=.),stat=<span class="string">"identity"</span>,position=<span class="string">"identity"</span>,alpha=<span class="number">0.5</span>)+</span><br><span class="line">  scale_fill_manual(values = c(<span class="string">"#5566FF"</span>,<span class="string">"#FF6655"</span>))+</span><br><span class="line">  scale_y_continuous(labels = comma, limits = c(<span class="number">0.4</span>, <span class="number">0.58</span>), oob = rescale_none) <span class="comment">## scales package "comma" &amp; rescale_none</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>strings</p>
+   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tolower(str) <span class="comment">## from uppercase to lowercase </span></span><br><span class="line">toupper(str) <span class="comment">## from lowercase to uppercase</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>pipeline fun</p>
+   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p>filter fun</p>
+   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">starwars %&gt;% filter(mass &gt; mean(mass, na.rm = <span class="literal">TRUE</span>))</span><br><span class="line"></span><br><span class="line">starwars %&gt;% group_by(gender) %&gt;% filter(mass &gt; mean(mass, na.rm = <span class="literal">TRUE</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>rename</p>
+   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% `colnames&lt;-`(c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"v"</span>, <span class="string">"b"</span>)) <span class="comment">##change all cols names</span></span><br><span class="line">df %&gt;% renames(oldname = newname) <span class="comment">##change col name</span></span><br><span class="line"></span><br><span class="line">column_to_rownames(var = <span class="string">"a"</span>) <span class="comment">##</span></span><br><span class="line">rownames_to_column(var = <span class="string">"a"</span>) <span class="comment">##</span></span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -483,17 +489,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/基因富集/" rel="tag"># 基因富集</a>
-          
-            <a href="/tags/id转换/" rel="tag"># id转换</a>
-          
-        </div>
-      
 
       
       
@@ -503,8 +498,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/06/brightloong/" rel="next" title="Start">
-                <i class="fa fa-chevron-left"></i> Start
+              <a href="/2019/11/24/Ipython-notebook-Essentials/" rel="next" title="Ipython notebook Essentials">
+                <i class="fa fa-chevron-left"></i> Ipython notebook Essentials
               </a>
             
           </div>
@@ -512,10 +507,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/16/Kullback-–-Leibler-Divergence在检查个体差异的应用/" rel="prev" title="Kullback – Leibler Divergence在检查样本离散程度的应用">
-                Kullback – Leibler Divergence在检查样本离散程度的应用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -684,7 +675,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kegg通路富集："><span class="nav-number">1.</span> <span class="nav-text">kegg通路富集：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把需要转换的id组装成list："><span class="nav-number">2.</span> <span class="nav-text">把需要转换的id组装成list：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用bitr函数进行id转换："><span class="nav-number">3.</span> <span class="nav-text">利用bitr函数进行id转换：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将转换好的gene-name粘贴到富集结果中："><span class="nav-number">4.</span> <span class="nav-text">将转换好的gene name粘贴到富集结果中：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#R-function-notes"><span class="nav-number">1.</span> <span class="nav-text">R function notes</span></a></li></ol></div>
             
 
           </div>
