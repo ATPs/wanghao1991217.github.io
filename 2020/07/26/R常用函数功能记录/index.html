@@ -98,17 +98,17 @@
 
 
 
-  <meta name="description" content="R function notes replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4     remove fun    123456df %&amp;gt;% drop_na() ## drop">
+  <meta name="description" content="R function notesData frame processing replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4  remove fun 123456df %&amp;gt;% dro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R常用函数功能记录">
 <meta property="og:url" content="http://www.wanghao.live/2020/07/26/R常用函数功能记录/index.html">
 <meta property="og:site_name" content="Blog posted by wanghao">
-<meta property="og:description" content="R function notes replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4     remove fun    123456df %&amp;gt;% drop_na() ## drop">
+<meta property="og:description" content="R function notesData frame processing replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4  remove fun 123456df %&amp;gt;% dro">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-26T07:10:04.657Z">
+<meta property="og:updated_time" content="2020-08-02T08:20:30.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R常用函数功能记录">
-<meta name="twitter:description" content="R function notes replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4     remove fun    123456df %&amp;gt;% drop_na() ## drop">
+<meta name="twitter:description" content="R function notesData frame processing replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4  remove fun 123456df %&amp;gt;% dro">
 
 
 
@@ -380,13 +380,23 @@
                 
               
 
-              <time title="Created: 2020-07-26 15:02:00 / Modified: 15:10:04" itemprop="dateCreated datePublished" datetime="2020-07-26T15:02:00+08:00">2020-07-26</time>
+              <time title="Created: 2020-07-26 15:02:00" itemprop="dateCreated datePublished" datetime="2020-07-26T15:02:00+08:00">2020-07-26</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-08-02 16:20:30" itemprop="dateModified" datetime="2020-08-02T16:20:30+08:00">2020-08-02</time>
+              </span>
             
           
 
@@ -437,52 +447,45 @@
       
 
       
-        <h3 id="R-function-notes"><a href="#R-function-notes" class="headerlink" title="R function notes"></a>R function notes</h3><p> replace fun</p>
+        <h2 id="R-function-notes"><a href="#R-function-notes" class="headerlink" title="R function notes"></a>R function notes</h2><h4 id="Data-frame-processing"><a href="#Data-frame-processing" class="headerlink" title="Data frame processing"></a>Data frame processing</h4><ol>
+<li><p>replace fun</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtcars %&gt;% mutate(mpg = replace(mpg, cyl == <span class="number">4</span>, <span class="literal">NA</span>)) <span class="comment">## change the values in 'mpg' to NA that corresponds to cyl==4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>remove fun</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% drop_na() <span class="comment">## drop rows containing NA</span></span><br><span class="line"></span><br><span class="line">df %&gt;% drop_na(x) <span class="comment">## drop rows which the x column containing NA</span></span><br><span class="line"></span><br><span class="line">vars &lt;- c(<span class="string">"y"</span>, <span class="string">"z"</span>)</span><br><span class="line">df %&gt;% drop_na(x, any_of(vars)) <span class="comment">## drop rows which the y and z col containing NA.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>split fun</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">as.list(strsplit(str, <span class="string">"\\s+"</span>)) <span class="comment">## split a string to a list</span></span><br><span class="line"></span><br><span class="line">base::split(df, f=factor(var)) <span class="comment">## split a data.frame to a list of dfs</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>merge fun</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dplyr::bind_rows(list_of_dataframes, .id = <span class="string">"column_label"</span>) <span class="comment">### bind a list of dfs to one df</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>select fun</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">select(mydata,starts_with(<span class="string">"mpg"</span>)) <span class="comment">### Select on columns names of the dataframe which starts with</span></span><br><span class="line"></span><br><span class="line">select(mydata,ends_with(<span class="string">"cyl"</span>)) <span class="comment">### Select on columns names of the dataframe which ends with</span></span><br><span class="line"></span><br><span class="line">select(mydata,contains(c(<span class="string">"a"</span>,<span class="string">"b"</span>))) <span class="comment">### Select on columns names of the dataframe which contains</span></span><br><span class="line"></span><br><span class="line">select(mydata,matches(<span class="string">"di"</span>)) <span class="comment">### Select on columns names of the dataframe which matches</span></span><br><span class="line"></span><br><span class="line">select(mydata,everything()) <span class="comment">### Select everything</span></span><br><span class="line"></span><br><span class="line">select(mydata,mpg,cyl,wt) <span class="comment">### Select columns by using names</span></span><br><span class="line"></span><br><span class="line">select(mydata,<span class="number">3</span>:<span class="number">4</span>)  <span class="comment">### Select columns by index</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>filter fun</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">starwars %&gt;% filter(mass &gt; mean(mass, na.rm = <span class="literal">TRUE</span>))</span><br><span class="line"></span><br><span class="line">starwars %&gt;% group_by(gender) %&gt;% filter(mass &gt; mean(mass, na.rm = <span class="literal">TRUE</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>rename</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% `colnames&lt;-`(c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"v"</span>, <span class="string">"b"</span>)) <span class="comment">##change all cols names</span></span><br><span class="line">df %&gt;% rename(oldname = newname) <span class="comment">##change col name</span></span><br><span class="line"></span><br><span class="line">column_to_rownames(var = <span class="string">"a"</span>) <span class="comment">##</span></span><br><span class="line">rownames_to_column(var = <span class="string">"a"</span>) <span class="comment">##</span></span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
+<h4 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h4><ol>
+<li><p>transform</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tolower(str) <span class="comment">## from uppercase to lowercase </span></span><br><span class="line">toupper(str) <span class="comment">## from lowercase to uppercase</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>string match &amp; extract</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
+<h4 id="Visualization"><a href="#Visualization" class="headerlink" title="Visualization"></a>Visualization</h4><ol>
+<li><p>ggplot2 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">geom_point(shape = <span class="string">"|"</span>) <span class="comment">## other shapes of point plot of ggplot2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### bar plot star from non-zero ylab </span></span><br><span class="line"><span class="keyword">library</span>(scales)</span><br><span class="line">ggplot(.,aes(x=.,y=.,fill = .)) +</span><br><span class="line">  geom_bar(aes(fill=.),stat=<span class="string">"identity"</span>,position=<span class="string">"identity"</span>,alpha=<span class="number">0.5</span>)+</span><br><span class="line">  scale_fill_manual(values = c(<span class="string">"#5566FF"</span>,<span class="string">"#FF6655"</span>))+</span><br><span class="line">  scale_y_continuous(labels = comma, limits = c(<span class="number">0.4</span>, <span class="number">0.58</span>), oob = rescale_none) <span class="comment">## scales package "comma" &amp; rescale_none</span></span><br></pre></td></tr></table></figure>
 
-<p> remove fun</p>
-   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% drop_na() <span class="comment">## drop rows containing NA</span></span><br><span class="line"></span><br><span class="line">df %&gt;% drop_na(x) <span class="comment">## drop rows which the x column containing NA</span></span><br><span class="line"></span><br><span class="line">vars &lt;- c(<span class="string">"y"</span>, <span class="string">"z"</span>)</span><br><span class="line">df %&gt;% drop_na(x, any_of(vars)) <span class="comment">## drop rows which the y and z col containing NA3.</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p> split fun</p>
-   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">as.list(strsplit(str, <span class="string">"\\s+"</span>)) <span class="comment">## split a string to a list</span></span><br><span class="line"></span><br><span class="line">base::split(df, f=factor(var)) <span class="comment">## split a data.frame to a list of dfs</span></span><br></pre></td></tr></table></figure>
-
-<p>  merge fun</p>
-   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dplyr::bind_rows(list_of_dataframes, .id = <span class="string">"column_label"</span>) <span class="comment">### bind a list of dfs to one df</span></span><br></pre></td></tr></table></figure>
-
-<p> select fun</p>
-   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">select(mydata,starts_with(<span class="string">"mpg"</span>)) <span class="comment">### Select on columns names of the dataframe which starts with</span></span><br><span class="line"></span><br><span class="line">select(mydata,ends_with(<span class="string">"cyl"</span>)) <span class="comment">### Select on columns names of the dataframe which ends with</span></span><br><span class="line"></span><br><span class="line">select(mydata,contains(c(<span class="string">"a"</span>,<span class="string">"b"</span>))) <span class="comment">### Select on columns names of the dataframe which contains</span></span><br><span class="line"></span><br><span class="line">select(mydata,matches(<span class="string">"di"</span>)) <span class="comment">### Select on columns names of the dataframe which matches</span></span><br><span class="line"></span><br><span class="line">select(mydata,everything()) <span class="comment">### Select everything</span></span><br><span class="line"></span><br><span class="line">select(mydata,mpg,cyl,wt) <span class="comment">### Select columns by using names</span></span><br><span class="line"></span><br><span class="line">select(mydata,<span class="number">3</span>:<span class="number">4</span>)  <span class="comment">### Select columns by index</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p> ggplot2 </p>
-   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">geom_point(shape = <span class="string">"|"</span>) <span class="comment">## other shapes of point plot of ggplot2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### bar plot star from non-zero ylab </span></span><br><span class="line"><span class="keyword">library</span>(scales)</span><br><span class="line">ggplot(.,aes(x=.,y=.,fill = .)) +</span><br><span class="line">  geom_bar(aes(fill=.),stat=<span class="string">"identity"</span>,position=<span class="string">"identity"</span>,alpha=<span class="number">0.5</span>)+</span><br><span class="line">  scale_fill_manual(values = c(<span class="string">"#5566FF"</span>,<span class="string">"#FF6655"</span>))+</span><br><span class="line">  scale_y_continuous(labels = comma, limits = c(<span class="number">0.4</span>, <span class="number">0.58</span>), oob = rescale_none) <span class="comment">## scales package "comma" &amp; rescale_none</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>strings</p>
-   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tolower(str) <span class="comment">## from uppercase to lowercase </span></span><br><span class="line">toupper(str) <span class="comment">## from lowercase to uppercase</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>pipeline fun</p>
-   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
-
-<p>filter fun</p>
-   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">starwars %&gt;% filter(mass &gt; mean(mass, na.rm = <span class="literal">TRUE</span>))</span><br><span class="line"></span><br><span class="line">starwars %&gt;% group_by(gender) %&gt;% filter(mass &gt; mean(mass, na.rm = <span class="literal">TRUE</span>))</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>rename</p>
-   <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% `colnames&lt;-`(c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"v"</span>, <span class="string">"b"</span>)) <span class="comment">##change all cols names</span></span><br><span class="line">df %&gt;% renames(oldname = newname) <span class="comment">##change col name</span></span><br><span class="line"></span><br><span class="line">column_to_rownames(var = <span class="string">"a"</span>) <span class="comment">##</span></span><br><span class="line">rownames_to_column(var = <span class="string">"a"</span>) <span class="comment">##</span></span><br></pre></td></tr></table></figure>
-
+</li>
+</ol>
 
       
     </div>
@@ -690,7 +693,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#R-function-notes"><span class="nav-number">1.</span> <span class="nav-text">R function notes</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#R-function-notes"><span class="nav-number">1.</span> <span class="nav-text">R function notes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-frame-processing"><span class="nav-number">1.0.1.</span> <span class="nav-text">Data frame processing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strings"><span class="nav-number">1.0.2.</span> <span class="nav-text">Strings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Visualization"><span class="nav-number">1.0.3.</span> <span class="nav-text">Visualization</span></a></li></ol></li></ol></div>
             
 
           </div>
