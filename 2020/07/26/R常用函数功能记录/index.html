@@ -98,17 +98,17 @@
 
 
 
-  <meta name="description" content="R function notesData frame processing replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4  remove fun 123456df %&amp;gt;% dro">
+  <meta name="description" content="R function notesData frame processing : dplyr replace fun  12345678910111213141516mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) # change the values in &apos;mpg&apos; to NA that corresponds to cyl==4st">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R常用函数功能记录">
+<meta property="og:title" content="R Basic Functions Collection">
 <meta property="og:url" content="http://www.wanghao.live/2020/07/26/R常用函数功能记录/index.html">
 <meta property="og:site_name" content="Blog posted by wanghao">
-<meta property="og:description" content="R function notesData frame processing replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4  remove fun 123456df %&amp;gt;% dro">
+<meta property="og:description" content="R function notesData frame processing : dplyr replace fun  12345678910111213141516mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) # change the values in &apos;mpg&apos; to NA that corresponds to cyl==4st">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-02T08:20:30.537Z">
+<meta property="og:updated_time" content="2020-08-05T15:04:43.996Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R常用函数功能记录">
-<meta name="twitter:description" content="R function notesData frame processing replace fun 1mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) ## change the values in &apos;mpg&apos; to NA that corresponds to cyl==4  remove fun 123456df %&amp;gt;% dro">
+<meta name="twitter:title" content="R Basic Functions Collection">
+<meta name="twitter:description" content="R function notesData frame processing : dplyr replace fun  12345678910111213141516mtcars %&amp;gt;% mutate(mpg = replace(mpg, cyl == 4, NA)) # change the values in &apos;mpg&apos; to NA that corresponds to cyl==4st">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>R常用函数功能记录 | Blog posted by wanghao</title>
+  <title>R Basic Functions Collection | Blog posted by wanghao</title>
   
 
 
@@ -354,7 +354,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">R常用函数功能记录
+          <h1 class="post-title" itemprop="name headline">R Basic Functions Collection
 
               
             
@@ -395,7 +395,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-08-02 16:20:30" itemprop="dateModified" datetime="2020-08-02T16:20:30+08:00">2020-08-02</time>
+                <time title="Modified: 2020-08-05 23:04:43" itemprop="dateModified" datetime="2020-08-05T23:04:43+08:00">2020-08-05</time>
               </span>
             
           
@@ -447,12 +447,16 @@
       
 
       
-        <h2 id="R-function-notes"><a href="#R-function-notes" class="headerlink" title="R function notes"></a>R function notes</h2><h4 id="Data-frame-processing"><a href="#Data-frame-processing" class="headerlink" title="Data frame processing"></a>Data frame processing</h4><ol>
+        <h2 id="R-function-notes"><a href="#R-function-notes" class="headerlink" title="R function notes"></a>R function notes</h2><h4 id="Data-frame-processing-dplyr"><a href="#Data-frame-processing-dplyr" class="headerlink" title="Data frame processing : dplyr"></a>Data frame processing : dplyr</h4><ol>
 <li><p>replace fun</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtcars %&gt;% mutate(mpg = replace(mpg, cyl == <span class="number">4</span>, <span class="literal">NA</span>)) <span class="comment">## change the values in 'mpg' to NA that corresponds to cyl==4</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mtcars %&gt;% mutate(mpg = replace(mpg, cyl == <span class="number">4</span>, <span class="literal">NA</span>)) <span class="comment"># change the values in 'mpg' to NA that corresponds to cyl==4</span></span><br><span class="line"></span><br><span class="line">starwars %&gt;%</span><br><span class="line">  select(name, eye_color) %&gt;%</span><br><span class="line">  mutate(eye_color = na_if(eye_color, <span class="string">"unknown"</span>)) <span class="comment"># na_if is particularly useful inside mutate</span></span><br><span class="line"></span><br><span class="line">starwars %&gt;%</span><br><span class="line">  mutate_if(is.character, list(~na_if(., <span class="string">"unknown"</span>))) <span class="comment"># na_if can also be used with scoped variants of mutate, like mutate_if to mutate multiple columns</span></span><br><span class="line"></span><br><span class="line">df %&gt;% replace_na(list(x = <span class="number">0</span>, y = <span class="string">"unknown"</span>)) <span class="comment"># Replace NAs in a data frame</span></span><br><span class="line"></span><br><span class="line">df %&gt;% dplyr::mutate(x = replace_na(x, <span class="number">0</span>)) <span class="comment"># Replace NAs in a vector</span></span><br><span class="line">df$x %&gt;% replace_na(<span class="number">0</span>)</span><br><span class="line">df$y %&gt;% replace_na(<span class="string">"unknown"</span>)</span><br><span class="line"></span><br><span class="line">df %&gt;% na_if(., <span class="number">0</span>) <span class="comment"># replace all 0 to NA</span></span><br></pre></td></tr></table></figure>
+
+
 </li>
+</ol>
+<ol start="2">
 <li><p>remove fun</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% drop_na() <span class="comment">## drop rows containing NA</span></span><br><span class="line"></span><br><span class="line">df %&gt;% drop_na(x) <span class="comment">## drop rows which the x column containing NA</span></span><br><span class="line"></span><br><span class="line">vars &lt;- c(<span class="string">"y"</span>, <span class="string">"z"</span>)</span><br><span class="line">df %&gt;% drop_na(x, any_of(vars)) <span class="comment">## drop rows which the y and z col containing NA.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% drop_na() <span class="comment"># drop rows containing NA</span></span><br><span class="line"></span><br><span class="line">df %&gt;% drop_na(x) <span class="comment"># drop rows which the x column containing NA</span></span><br><span class="line"></span><br><span class="line">vars &lt;- c(<span class="string">"y"</span>, <span class="string">"z"</span>)</span><br><span class="line">df %&gt;% drop_na(x, any_of(vars)) <span class="comment"># drop rows which the y and z col containing NA.</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>split fun</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">as.list(strsplit(str, <span class="string">"\\s+"</span>)) <span class="comment">## split a string to a list</span></span><br><span class="line"></span><br><span class="line">base::split(df, f=factor(var)) <span class="comment">## split a data.frame to a list of dfs</span></span><br></pre></td></tr></table></figure>
@@ -461,22 +465,31 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dplyr::bind_rows(list_of_dataframes, .id = <span class="string">"column_label"</span>) <span class="comment">### bind a list of dfs to one df</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>select fun</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">select(mydata,starts_with(<span class="string">"mpg"</span>)) <span class="comment">### Select on columns names of the dataframe which starts with</span></span><br><span class="line"></span><br><span class="line">select(mydata,ends_with(<span class="string">"cyl"</span>)) <span class="comment">### Select on columns names of the dataframe which ends with</span></span><br><span class="line"></span><br><span class="line">select(mydata,contains(c(<span class="string">"a"</span>,<span class="string">"b"</span>))) <span class="comment">### Select on columns names of the dataframe which contains</span></span><br><span class="line"></span><br><span class="line">select(mydata,matches(<span class="string">"di"</span>)) <span class="comment">### Select on columns names of the dataframe which matches</span></span><br><span class="line"></span><br><span class="line">select(mydata,everything()) <span class="comment">### Select everything</span></span><br><span class="line"></span><br><span class="line">select(mydata,mpg,cyl,wt) <span class="comment">### Select columns by using names</span></span><br><span class="line"></span><br><span class="line">select(mydata,<span class="number">3</span>:<span class="number">4</span>)  <span class="comment">### Select columns by index</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">select(mydata,starts_with(<span class="string">"mpg"</span>)) <span class="comment"># Select on columns names of the dataframe which starts with</span></span><br><span class="line"></span><br><span class="line">select(mydata,ends_with(<span class="string">"cyl"</span>)) <span class="comment"># Select on columns names of the dataframe which ends with</span></span><br><span class="line"></span><br><span class="line">select(mydata,contains(c(<span class="string">"a"</span>,<span class="string">"b"</span>))) <span class="comment"># Select on columns names of the dataframe which contains</span></span><br><span class="line"></span><br><span class="line">select(mydata,matches(<span class="string">"di"</span>)) <span class="comment"># Select on columns names of the dataframe which matches</span></span><br><span class="line"></span><br><span class="line">select(mydata,everything()) <span class="comment"># Select everything</span></span><br><span class="line"></span><br><span class="line">select(mydata,mpg,cyl,wt) <span class="comment"># Select columns by using names</span></span><br><span class="line"></span><br><span class="line">select(mydata,<span class="number">3</span>:<span class="number">4</span>)  <span class="comment"># Select columns by index</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>filter fun</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">starwars %&gt;% filter(mass &gt; mean(mass, na.rm = <span class="literal">TRUE</span>))</span><br><span class="line"></span><br><span class="line">starwars %&gt;% group_by(gender) %&gt;% filter(mass &gt; mean(mass, na.rm = <span class="literal">TRUE</span>))</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>rename</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% `colnames&lt;-`(c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"v"</span>, <span class="string">"b"</span>)) <span class="comment">##change all cols names</span></span><br><span class="line">df %&gt;% rename(oldname = newname) <span class="comment">##change col name</span></span><br><span class="line"></span><br><span class="line">column_to_rownames(var = <span class="string">"a"</span>) <span class="comment">##</span></span><br><span class="line">rownames_to_column(var = <span class="string">"a"</span>) <span class="comment">##</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% `colnames&lt;-`(c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"v"</span>, <span class="string">"b"</span>)) <span class="comment">##change all cols names</span></span><br><span class="line">df %&gt;% rename(oldname = newname) <span class="comment">#change col name</span></span><br><span class="line"></span><br><span class="line">column_to_rownames(var = <span class="string">"a"</span>) <span class="comment">#</span></span><br><span class="line">rownames_to_column(var = <span class="string">"a"</span>) <span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="8">
+<li><p>Change the Order of Columns </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df %&gt;% relocate(y, z) <span class="comment"># Relocate columns to the left hand side</span></span><br><span class="line"></span><br><span class="line">df %&gt;% relocate(w, .after = y) <span class="comment"># Move columns to a different position, Relocate after a specific column</span></span><br><span class="line"></span><br><span class="line">df %&gt;% relocate(w, .after = last_col())<span class="comment"># Move columns to the right hand side use `last_col()`</span></span><br></pre></td></tr></table></figure>
+
+
 
 </li>
 </ol>
 <h4 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h4><ol>
 <li><p>transform</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tolower(str) <span class="comment">## from uppercase to lowercase </span></span><br><span class="line">toupper(str) <span class="comment">## from lowercase to uppercase</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tolower(str) <span class="comment"># from uppercase to lowercase </span></span><br><span class="line"></span><br><span class="line">toupper(str) <span class="comment"># from lowercase to uppercase</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>string match &amp; extract</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">substr(str,n1,n2)  <span class="comment"># Extract substrings from a character vector</span></span><br><span class="line"></span><br><span class="line">stringr::str_sub(str,n1,n2) <span class="comment"># Extract and replace substrings from a character vector</span></span><br><span class="line"></span><br><span class="line">stringr::str_extract(str, <span class="string">"[0-9]+"</span>) <span class="comment"># Extract the integers from a string</span></span><br><span class="line"></span><br><span class="line">stringr::str_extract(V1, <span class="string">"[aA-zZ]+"</span>) <span class="comment">#Extract the integers from a string</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -693,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#R-function-notes"><span class="nav-number">1.</span> <span class="nav-text">R function notes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-frame-processing"><span class="nav-number">1.0.1.</span> <span class="nav-text">Data frame processing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strings"><span class="nav-number">1.0.2.</span> <span class="nav-text">Strings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Visualization"><span class="nav-number">1.0.3.</span> <span class="nav-text">Visualization</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#R-function-notes"><span class="nav-number">1.</span> <span class="nav-text">R function notes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-frame-processing-dplyr"><span class="nav-number">1.0.1.</span> <span class="nav-text">Data frame processing : dplyr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strings"><span class="nav-number">1.0.2.</span> <span class="nav-text">Strings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Visualization"><span class="nav-number">1.0.3.</span> <span class="nav-text">Visualization</span></a></li></ol></li></ol></div>
             
 
           </div>
